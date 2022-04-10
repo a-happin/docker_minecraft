@@ -1,0 +1,29 @@
+services:
+  init:
+    build:
+      context: init
+    env_file: .env
+    volumes:
+      - type: volume
+        source: minecraft-dir
+        target: /mnt/minecraft
+        volume:
+          nocopy: true
+  minecraft-server:
+    build:
+      context: minecraft-server
+      args:
+        MINECRAFT_VERSION: 1.18.2
+    env_file: .env
+    ports:
+      - "25565:25565"
+      - "25575:25575"
+    volumes:
+      - type: volume
+        source: minecraft-dir
+        target: /mnt/minecraft
+        volume:
+          nocopy: true
+
+volumes:
+  minecraft-dir:
