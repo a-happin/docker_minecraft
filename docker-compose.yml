@@ -17,6 +17,7 @@ services:
     env_file: .env
     ports:
       - "25565:25565"
+    restart: always
     volumes:
       - type: volume
         source: minecraft-dir
