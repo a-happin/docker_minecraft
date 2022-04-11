@@ -90,3 +90,12 @@ cd docker_minecraft
 docker compose run --rm send-command help
 docker compose run --rm send-command say hi
 ```
+
+## upgrade world
+
+Update minecraft-server/Dockerfile
+
+```sh
+docker compose build minecraft-server --no-cache
+docker compose run --rm minecraft-server upgrade
+```
