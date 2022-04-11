@@ -24,6 +24,8 @@ services:
         target: /mnt/minecraft
         volume:
           nocopy: true
+    stdin_open: true
+    tty: true
   send-command:
     build:
       context: send-command
