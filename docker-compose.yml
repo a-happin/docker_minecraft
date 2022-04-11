@@ -17,13 +17,18 @@ services:
     env_file: .env
     ports:
       - "25565:25565"
-      - "25575:25575"
     volumes:
       - type: volume
         source: minecraft-dir
         target: /mnt/minecraft
         volume:
           nocopy: true
+  send-command:
+    build:
+      context: send-command
+    env_file: .env
+    environment:
+      RCON_HOSTNAME: minecraft-server
 
 volumes:
   minecraft-dir:
