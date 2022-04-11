@@ -100,6 +100,14 @@ docker update <running-container> --restart no
 docker compose run --rm send-command stop
 ```
 
+↓こっちでもできるようになった
+
+```sh
+docker update <running-container> --restart no
+docker attach <running-container>
+stop
+```
+
 ### 再開
 ```sh
 docker compose up -d minecraft-server
