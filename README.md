@@ -91,6 +91,20 @@ docker compose run --rm send-command help
 docker compose run --rm send-command say hi
 ```
 
+
+## メンテナンス
+
+### 止める
+```sh
+docker update <running-container> --restart no
+docker compose run --rm send-command stop
+```
+
+### 再開
+```sh
+docker compose up -d minecraft-server
+```
+
 ## upgrade world
 
 Update minecraft-server/Dockerfile
@@ -99,3 +113,5 @@ Update minecraft-server/Dockerfile
 docker compose build minecraft-server --no-cache
 docker compose run --rm minecraft-server upgrade
 ```
+
+確認が終わったら一旦`stop`して、再開する(compose run状態だと不都合がある(network,restart))
