@@ -1,6 +1,6 @@
 FROM ubuntu as builder
 
-RUN apt-get update && apt-get install -y --no-install-recommends curl unzip ca-certificates gosu
+RUN apt-get update && apt-get install -y --no-install-recommends curl unzip ca-certificates gosu && rm -rf /var/lib/apt/lists/*
 
 ENV DENO_INSTALL /usr/local
 RUN curl -fsSL https://deno.land/install.sh | sh
