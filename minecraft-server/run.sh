@@ -1,10 +1,14 @@
 #!/bin/sh
 
-[ "$*" = "init" ] && {
+[ "$1" = "init" ] && {
   cd /mnt/minecraft
   echo eula=true > eula.txt
   echo enable-rcon=true >> server.properties
   echo rcon.password=password >> server.properties
+  [ "$2" = "void" ] && {
+    mkdir -p world/datapacks
+    curl -fSSL https://github.com/a-happin/worldgen-void/releases/download/v1.2.0/worldgen-void.zip -o world/datapacks/worldgen-void.zip
+  }
   exit
 }
 
