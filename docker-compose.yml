@@ -10,7 +10,7 @@ services:
       - 25575:25575
     volumes:
       - type: bind
-        source: ./minecraft-server-data
+        source: ./world
         target: /mnt/minecraft
     tty: true
     stdin_open: true
