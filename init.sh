@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sh init_env.sh
-docker compose build init
-docker compose run --rm init
-docker compose up -d minecraft-server
+[ -e .env ] || sh init_env.sh
+mkdir -p minecraft-server-data
+sudo docker compose run --rm minecraft-server init
+sudo docker compose up -d minecraft-server

@@ -1,37 +1,16 @@
 services:
-  init:
-    build:
-      context: init
-    env_file: .env
-    volumes:
-      - type: volume
-        source: minecraft-dir
-        target: /mnt/minecraft
-        volume:
-          nocopy: true
   minecraft-server:
     build:
       context: minecraft-server
       args:
-        MINECRAFT_VERSION: 1.18.2
+        MINECRAFT_VERSION: 1.19.4
     env_file: .env
     ports:
-      - "25565:25565"
-    restart: always
+      - 25565:25565
+      - 25575:25575
     volumes:
-      - type: volume
-        source: minecraft-dir
+      - type: bind
+        source: ./minecraft-server-data
         target: /mnt/minecraft
-        volume:
-          nocopy: true
-    stdin_open: true
     tty: true
-  send-command:
-    build:
-      context: send-command
-    env_file: .env
-    environment:
-      RCON_HOSTNAME: minecraft-server
-
-volumes:
-  minecraft-dir:
+    stdin_open: true

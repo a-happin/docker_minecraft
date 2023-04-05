@@ -9,7 +9,7 @@ ARG MINECRAFT_VERSION
 RUN test -n "${MINECRAFT_VERSION}" && deno run --allow-all https://raw.githubusercontent.com/a-happin/scripts-for-minecraft/main/download-minecraft-server.ts ${MINECRAFT_VERSION}
 
 
-FROM openjdk:17.0.2
+FROM eclipse-temurin:17
 
 COPY --from=builder /usr/sbin/gosu /usr/sbin/gosu
 
@@ -20,6 +20,9 @@ COPY --from=builder /${MINECRAFT_VERSION}.server.jar /opt/minecraft/${MINECRAFT_
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
+
+COPY run.sh /usr/local/bin/run.sh
+RUN chmod +x /usr/local/bin/run.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
