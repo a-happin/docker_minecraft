@@ -12,7 +12,7 @@
   exit
 }
 
-[ "$*" = "upgrade" ] && {
+[ "$1" = "upgrade" ] && {
   cd /mnt/minecraft
   set -- java -Xms${JVM_MEM:-1G} -Xmx${JVM_MEM:-1G} -jar /opt/minecraft/${MINECRAFT_VERSION}.server.jar --forceUpgrade --eraseCache --nogui
 }
