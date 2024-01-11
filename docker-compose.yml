@@ -10,7 +10,7 @@ services:
       - 25575:25575
     volumes:
       - type: bind
-        source: ./world
+        source: ./data
         target: /mnt/minecraft
     tty: true
     stdin_open: true
@@ -42,7 +42,7 @@ services:
       - 25575:25575
     volumes:
       - type: bind
-        source: ./world
+        source: ./data
         target: /mnt/minecraft
     tty: true
     stdin_open: true
