@@ -3,7 +3,7 @@ services:
     build:
       context: minecraft-server
       args:
-        MINECRAFT_VERSION: 1.19.4
+        MINECRAFT_VERSION: 1.20.1
     env_file: .env
     ports:
       - 25565:25565
@@ -14,6 +14,23 @@ services:
         target: /mnt/minecraft
     tty: true
     stdin_open: true
+
+  forge-server:
+    build:
+      context: forge-server
+      args:
+        MINECRAFT_VERSION: 1.20.1
+    env_file: .env
+    ports:
+      - 25565:25565
+      - 25575:25575
+    volumes:
+      - type: bind
+        source: ./forge-data
+        target: /mnt/minecraft
+    tty: true
+    stdin_open: true
+
   mch:
     build:
       context: mch
